@@ -18,9 +18,26 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(title: Text("hello title")),
-      body: Text("Hello body"),
+      // backgroundColor: Colors.grey,
+      appBar: AppBar(
+        backgroundColor: Colors.indigo,
+        title: Text(
+          "Day 2",
+          style: TextStyle(fontSize: 18, color: Colors.white),
+        ),
+      ),
+
+      body: Row(
+        children: [
+          Expanded(child: Container(height: 200, color: Colors.red)),
+
+          SizedBox(width: 20),
+
+          Expanded(child: Text("Hello")),
+        ],
+      ),
     );
   }
 }
