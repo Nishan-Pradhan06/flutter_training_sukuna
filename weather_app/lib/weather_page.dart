@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class WeatherPage extends StatefulWidget {
@@ -8,6 +9,18 @@ class WeatherPage extends StatefulWidget {
 }
 
 class _WeatherPageState extends State<WeatherPage> {
+  void getWeather() async {
+    try {
+      var response = await Dio().get(
+        "https://api.weatherapi.com/v1/current.json?q=KTM&key=cea57194c4c54658a6533401251111",
+      );
+
+      final data = response.data;
+
+      
+    } catch (e) {}
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -121,3 +134,62 @@ class _WeatherPageState extends State<WeatherPage> {
     );
   }
 }
+
+
+
+
+/*
+
+
+{
+  "location": {
+    "name": "Biratnagar",
+    "region": "",
+    "country": "Nepal",
+    "lat": 26.4833,
+    "lon": 87.2833,
+    "tz_id": "Asia/Kathmandu",
+    "localtime_epoch": 1762833150,
+    "localtime": "2025-11-11 09:37"
+  },
+  "current": {
+    "last_updated_epoch": 1762832700,
+    "last_updated": "2025-11-11 09:30",
+    "temp_c": 22.8,
+    "temp_f": 73.1,
+    "is_day": 1,
+    "condition": {
+      "text": "Sunny",
+      "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
+      "code": 1000
+    },
+    "wind_mph": 5.6,
+    "wind_kph": 9,
+    "wind_degree": 270,
+    "wind_dir": "W",
+    "pressure_mb": 1014,
+    "pressure_in": 29.95,
+    "precip_mm": 0,
+    "precip_in": 0,
+    "humidity": 66,
+    "cloud": 2,
+    "feelslike_c": 24.9,
+    "feelslike_f": 76.8,
+    "windchill_c": 22.8,
+    "windchill_f": 73.1,
+    "heatindex_c": 24.9,
+    "heatindex_f": 76.8,
+    "dewpoint_c": 16.1,
+    "dewpoint_f": 61,
+    "vis_km": 10,
+    "vis_miles": 6,
+    "uv": 3.1,
+    "gust_mph": 6.6,
+    "gust_kph": 10.5,
+    "short_rad": 264.94,
+    "diff_rad": 58.92,
+    "dni": 0,
+    "gti": 58.61
+  }
+}
+*/
