@@ -17,7 +17,6 @@ class _WeatherPageState extends State<WeatherPage> {
 
       final data = response.data;
 
-      
     } catch (e) {}
   }
 
