@@ -71,7 +71,14 @@ class _HomePageState extends State<HomePage> {
                               });
                             },
                           ),
-                          Text(todos[i].title),
+                          Text(
+                            todos[i].title,
+                            style: TextStyle(
+                              decoration: todos[i].isCompleted
+                                  ? TextDecoration.lineThrough
+                                  : TextDecoration.none,
+                            ),
+                          ),
                           Spacer(),
                           IconButton(
                             onPressed: () {
