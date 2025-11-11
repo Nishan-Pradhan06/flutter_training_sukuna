@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/weather_page.dart';
 
-class GetStarted extends StatelessWidget {
+class GetStarted extends StatefulWidget {
   const GetStarted({super.key});
 
+  @override
+  State<GetStarted> createState() => _GetStartedState();
+}
+
+class _GetStartedState extends State<GetStarted> {
+  TextEditingController addressController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,13 +46,31 @@ class GetStarted extends StatelessWidget {
               ),
             ),
             SizedBox(height: 40),
+
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: addressController,
+
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
+                  hintText: "Enter your city",
+                  border: OutlineInputBorder(),
+                ),
+              ),
+            ),
+
             SizedBox(
               height: 50,
               // width: 70,
               child: FilledButton(
                 onPressed: () {
                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => WeatherPage()),
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          WeatherPage(cityName: addressController.text),
+                    ),
                   );
                 },
                 child: Text(
@@ -61,4 +85,3 @@ class GetStarted extends StatelessWidget {
     );
   }
 }
-
